@@ -22,12 +22,6 @@ public class CommentService {
 
         Pageable pageComment = PageRequest.of(CommentPageNumber -1, 10);
 
-        Page<Comment> logs = commentRepository.findByCommentPostCode(pageComment,postCode);
-
-        log.info("postCode : " + postCode);
-        log.info("commentNumber : " + CommentPageNumber);
-        log.info("logsssS : " + logs.getContent());
-
         return commentRepository.findByCommentPostCode(pageComment, postCode);
     }
 
