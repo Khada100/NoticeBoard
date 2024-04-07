@@ -22,9 +22,13 @@ public class CommentController {
         this.service = service;
     }
 
-    @GetMapping("/{postCode}")
-    public ResponseEntity<ResponseDTO> selectAllComment (@PathVariable Long postCode) {
+    @GetMapping("/{postCode}/Comment/{number}")
+    public ResponseEntity<ResponseDTO> selectAllComment (@PathVariable String postCode,
+                                                         @PathVariable String number) {
+        Long post = Long.parseLong(postCode);
+        int commentPageNumber = Integer.parseInt(number);
 
-        return ResponseEntity.ok().body(new ResponseDTO(HttpStatus.OK, "전체조회", null));
+
+        return ResponseEntity.ok().body(new ResponseDTO(HttpStatus.OK, "댓글 조회", service.selectComment(commentPageNumber, post)));
     }
 }
