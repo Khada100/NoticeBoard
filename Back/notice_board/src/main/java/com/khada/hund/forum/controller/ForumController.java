@@ -1,13 +1,14 @@
 package com.khada.hund.forum.controller;
 
+import com.khada.hund.common.ResponseDTO;
+import com.khada.hund.forum.dto.ForumDTO;
 import com.khada.hund.forum.entity.Forum;
 import com.khada.hund.forum.service.ForumService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -25,7 +26,19 @@ public class ForumController {
 
         int number = Integer.parseInt(pageNumber);
 
+        log.info("number : " + number);
+
 
         return service.selectAllPost(number);
+    }
+
+    @PostMapping("/write")
+    public ResponseEntity<ResponseDTO> postingForum(@RequestBody ForumDTO forum){
+
+        log.info("forum :  "  + forum);
+
+        return ResponseEntity.ok()
+                .body(new ResponseDTO(HttpStatus.OK, "게시글 작성이 완료되었습니다.",
+                        service.postingForum(forum)));
     }
 }

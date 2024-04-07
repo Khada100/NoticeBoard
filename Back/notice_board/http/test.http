@@ -1,1 +1,14 @@
-localhost:8080/comment/2/Comment/1
+POST http://localhost:8080/board/write
+Content-Type: application/json
+Accept: */*
+Access-Control-Allow-Origin: *
+
+{
+  "title": "테스트 게시글 작성",
+  "writer": "이현강",
+  "detail": "편돌이하면서 프로젝트 해버리기",
+  "notice": "N",
+  "writeDateTime": "2024-03-13 18:26:54",
+  "postPassword": "1234",
+  "recommend": 0
+}
