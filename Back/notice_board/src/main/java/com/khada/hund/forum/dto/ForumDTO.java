@@ -9,7 +9,6 @@ import lombok.*;
 @Getter
 @ToString
 public class ForumDTO {
-
     private Long postCode;
     private String title;
     private String writer;

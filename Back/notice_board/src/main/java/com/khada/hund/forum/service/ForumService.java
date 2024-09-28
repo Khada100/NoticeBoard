@@ -40,7 +40,7 @@ public class ForumService {
             forumRepository.save(modelMapper.map(forum, Forum.class));
 
             message = "게시글 작성이 완료되었습니다.";
-        }catch (NullPointerException e){
+        }catch (Exception e){
             e.printStackTrace();
             message = "게시글 작성이 실패했습니다.";
         }
